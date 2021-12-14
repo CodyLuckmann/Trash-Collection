@@ -46,7 +46,7 @@ def create(request):
         zip_from_form = request.POST.get('zip_code')
         new_employee = Employee(name=name_from_form, user=logged_in_user, address=address_from_form, zip_code=zip_from_form)
         new_employee.save()
-        return HttpResponseRedirect(reverse('employee:index'))
+        return HttpResponseRedirect(reverse('employees:index'))
     else:
         return render(request, 'employees/create_employee.html')
     
