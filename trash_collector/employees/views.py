@@ -44,7 +44,7 @@ def create(request):
         name_from_form = request.POST.get('name')
         address_from_form = request.POST.get('address')
         zip_from_form = request.POST.get('zip_code')
-        new_employee = Employee(name=name_from_form, user=logged_in_user, address=address_from_form, zip_code=zip_from_form, weekly_pickup=weekly_from_form)
+        new_employee = Employee(name=name_from_form, user=logged_in_user, address=address_from_form, zip_code=zip_from_form)
         new_employee.save()
         return HttpResponseRedirect(reverse('employee:index'))
     else:
@@ -53,20 +53,20 @@ def create(request):
 @login_required
 def edit_profile(request):
     logged_in_user = request.user
-    logged_in_customer = Employee.objects.get(user=logged_in_user)
+    logged_in_employee = Employee.objects.get(user=logged_in_user)
     if request.method == "POST":
         name_from_form = request.POST.get('name')
         address_from_form = request.POST.get('address')
         zip_from_form = request.POST.get('zip_code')
         weekly_pickup_from_form = request.POST.get('weekly')
-        logged_in_customer.name = name_from_form
-        logged_in_customer.address = address_from_form
-        logged_in_customer.zip_code = zip_from_form
-        logged_in_customer.weekly_pickup = weekly_pickup_from_form
-        logged_in_customer.save()
+        logged_in_employee.name = name_from_form
+        logged_in_employee.address = address_from_form
+        logged_in_employee.zip_code = zip_from_form
+        logged_in_employee.weekly_pickup = weekly_pickup_from_form
+        logged_in_employee.save()
         return HttpResponseRedirect(reverse('employee:index'))
     else:
         context = {
-            'logged_in_customer': logged_in_customer
+            'logged_in_employee': logged_in_employee
         }
         return render(request, 'employee/edit_employee_profile.html', context)
