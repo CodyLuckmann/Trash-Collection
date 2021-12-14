@@ -9,5 +9,4 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('new/', views.create, name="create_employee"),
     path('edit_employee_profile/', views.edit_profile, name="edit_employee_profile"),
-    # path('', views.route, name="route"),
 ]
