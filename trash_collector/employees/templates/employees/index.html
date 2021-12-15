@@ -10,21 +10,19 @@
     <table class="center-table">
       <thead>
         <tr>
-          <th>{% for customer in all_customers %}
-              {{customer.name}} {{customer.weekly_pickup}}
-              {% endfor %}</th>
-          
-
-        </tr>
-
-      </thead>
+            <th>Name</th> <th>Zip Code</th> <th>Pick-up Day</th>
+          <tr>
+        </thead>
+        <tbody>{% for customer in all_customers%}
+                  {%if customoer.zip_code == logged_in_employee.zip_code %}
+                <tr>
+                  <td> {{customer.name}} {{customer.zip_code}} {{customer.weekly_pickup}}</td>
+                </tr>
+                  {% endif %}
+                {% endfor %}
+        </tbody>
     </table>
-    
-    
-
-    
-    
-  {% else %}
+    {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>
     <a href="{% url 'accounts:register' %}">Sign Up</a>
