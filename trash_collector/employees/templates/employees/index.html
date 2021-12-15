@@ -14,16 +14,14 @@
           <tr>
         </thead>
         <tbody>
-          {% for customer in all_customers%}
-            {% if customer.suspend_end == True %}
-              {% if customer.zip_code == logged_in_employee.zip_code %} 
-                {% if customer.weekly_pickup == day_of_week or customer.one_time_pickup == today%}
-                  <tr>
-                    <td> {{customer.name}} {{customer.zip_code}} {{customer.weekly_pickup}} {{customer.one_time_pickup}}</td>
-                  </tr>
-                {% endif %}
+          {% for customer in all_customers%} 
+            {% if customer.zip_code == logged_in_employee.zip_code %} 
+              {% if customer.weekly_pickup == day_of_week or customer.one_time_pickup == today%}
+                <tr>
+                  <td> {{customer.name}} {{customer.zip_code}} {{customer.weekly_pickup}} {{customer.one_time_pickup}}</td>
+                </tr>
               {% endif %}
-            {% endif %}  
+            {% endif %}
           {% endfor %}          
         </tbody>
     </table>
