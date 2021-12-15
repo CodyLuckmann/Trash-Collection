@@ -77,4 +77,11 @@ def edit_profile(request):
         }
         return render(request, 'employees/edit_employee_profile.html', context)
     
+    
+def charge(request, pk):
+    
+    pk = Customer.objects.get(id)
+    customer.balance+=20
+    return HttpResponseRedirect(reverse('employees:index'))
+    
 
