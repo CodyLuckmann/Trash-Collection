@@ -24,6 +24,8 @@
             {% endif %}
           {% endfor %}
           {{day_of_week}}
+          {{temp.dayofweek}}
+          {{test_day}}
         </tbody>
     </table>
     {% else %}
@@ -35,6 +37,3 @@
 
 
 
-{% for customer in all_customers %}
-     {{customer.name}}
-    {% endfor %}
