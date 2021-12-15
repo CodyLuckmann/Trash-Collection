@@ -17,7 +17,7 @@
           {% for customer in all_customers%} 
             {% if customer.zip_code == logged_in_employee.zip_code %} 
               {% if customer.weekly_pickup == day_of_week or customer.one_time_pickup == today%}
-                {% if today < customer.suspend_start and today > customer.suspend_end %}
+                {% if today < customer.suspend_start and today > customer.suspend_end or customer.suspend_start == Null %}
                   <tr>
                     <td> {{customer.name}} {{customer.zip_code}} {{customer.weekly_pickup}} {{customer.one_time_pickup}}</td>
                   </tr>
