@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from datetime import date
-
+from customers.models import Customer
 from .models import Employee
 
 # Create your views here.
@@ -25,12 +25,15 @@ def index(request):
     try:
         # This line will return the customer record of the logged-in user if one exists
         logged_in_employee = Employee.objects.get(user=logged_in_user)
+        all_customers = Customer.objects.all()
+        
 
         today = date.today()
         
         context = {
             'logged_in_employee': logged_in_employee,
-            'today': today
+            'today': today,
+            'all_customers': all_customers
         }
         return render(request, 'employees/index.html', context)
     except ObjectDoesNotExist:
@@ -68,3 +71,4 @@ def edit_profile(request):
             'logged_in_employee': logged_in_employee
         }
         return render(request, 'employees/edit_employee_profile.html', context)
+    
