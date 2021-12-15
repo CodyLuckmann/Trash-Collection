@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from datetime import date
+import calendar
 from customers.models import Customer
 from .models import Employee
 
@@ -29,11 +30,14 @@ def index(request):
         
 
         today = date.today()
+        day_of_week = calendar.day_name
+        
         
         context = {
             'logged_in_employee': logged_in_employee,
             'today': today,
-            'all_customers': all_customers
+            'all_customers': all_customers,
+            'day_of_week': day_of_week
         }
         return render(request, 'employees/index.html', context)
     except ObjectDoesNotExist:
