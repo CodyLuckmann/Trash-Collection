@@ -15,12 +15,15 @@
         </thead>
         <tbody>
           {% for customer in all_customers%}
-            {% if customer.zip_code == logged_in_employee.zip_code %}
-              <tr>
-                <td> {{customer.name}} {{customer.zip_code}} {{customer.weekly_pickup}}</td>
-              </tr>
+            {% if customer.zip_code == logged_in_employee.zip_code %} 
+              {% if customer.weekly_pickup == today %}
+                <tr>
+                  <td> {{customer.name}} {{customer.zip_code}} {{customer.weekly_pickup}}</td>
+                </tr>
+              {% endif %}
             {% endif %}
           {% endfor %}
+          {{day_of_week}}
         </tbody>
     </table>
     {% else %}
