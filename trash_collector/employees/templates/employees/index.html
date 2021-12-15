@@ -13,13 +13,14 @@
             <th>Name</th> <th>Zip Code</th> <th>Pick-up Day</th>
           <tr>
         </thead>
-        <tbody>{% for customer in all_customers%}
-                  {%if customoer.zip_code == logged_in_employee.zip_code %}
-                <tr>
-                  <td> {{customer.name}} {{customer.zip_code}} {{customer.weekly_pickup}}</td>
-                </tr>
-                  {% endif %}
-                {% endfor %}
+        <tbody>
+          {% for customer in all_customers%}
+            {% if customer.zip_code == logged_in_employee.zip_code %}
+              <tr>
+                <td> {{customer.name}} {{customer.zip_code}} {{customer.weekly_pickup}}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
         </tbody>
     </table>
     {% else %}
