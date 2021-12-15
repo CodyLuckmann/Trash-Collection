@@ -10,21 +10,19 @@
     <table class="center-table">
       <thead>
         <tr>
-            <th>Name</th> <th>Zip Code</th> <th>Pick-up Day</th>
+            <th>Name</th> <th>Zip Code</th> <th>Pick-up Day</th> <th>One Time Pickup</th>
           <tr>
         </thead>
         <tbody>
           {% for customer in all_customers%}
             {% if customer.zip_code == logged_in_employee.zip_code %} 
-              {% if customer.weekly_pickup == today %}
+              {% if customer.weekly_pickup == day_of_week or customer.one_time_pickup == today%}
                 <tr>
-                  <td> {{customer.name}} {{customer.zip_code}} {{customer.weekly_pickup}}</td>
+                  <td> {{customer.name}} {{customer.zip_code}} {{customer.weekly_pickup}} {{customer.one_time_pickup}}</td>
                 </tr>
               {% endif %}
             {% endif %}
-          {% endfor %}
-          {{day_of_week}}
-          {{temp.dayofweek}}
+          {% endfor %}          
           {{test_day}}
         </tbody>
     </table>
