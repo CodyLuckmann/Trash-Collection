@@ -77,11 +77,12 @@ def edit_profile(request):
         }
         return render(request, 'employees/edit_employee_profile.html', context)
     
-    
 def charge(request, pk):
     
-    pk = Customer.objects.get(id)
+    customer = Customer.objects.get(id=pk)
     customer.balance+=20
+    customer.date_of_last_pickup = date.today()
+    customer.save()
     return HttpResponseRedirect(reverse('employees:index'))
     
 

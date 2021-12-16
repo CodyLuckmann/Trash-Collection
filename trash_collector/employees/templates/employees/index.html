@@ -20,7 +20,7 @@
                 {% if today < customer.suspend_start or today > customer.suspend_end or customer.suspend_start == Null %}
                   <tr>
                     <td>{{customer.name}}</td><td>{{customer.zip_code}}</td>
-                    <td>{{customer.weekly_pickup}}</td><td>{{customer.one_time_pickup}}</td><td><button href="{% url 'employees:charge' customer.id %}" class="btn btn-primary" type="submit">Confirm Pickup</button></td>
+                    <td>{{customer.weekly_pickup}}</td><td>{{customer.one_time_pickup}}</td><td><a href="{% url 'employees:charge' customer.id %}" class="btn btn-primary" >Confirm Pickup</a></td>
                   </tr>
                 {% endif %}
               {% endif %}
