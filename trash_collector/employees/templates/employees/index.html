@@ -7,7 +7,18 @@
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!<br />
     Address: {{ logged_in_employee.address }} {{logged_in_employee.zip_code }}<br />
-    <h1>Customer Info</h1>
+    <h1>Customer Info</h1> <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Monday</a></li>
+        <li><a class="dropdown-item" href="#">Tuesday</a></li>
+        <li><a class="dropdown-item" href="#">Wednesday</a></li>
+        <li><a class="dropdown-item" href="#">Thursday</a></li>
+        <li><a class="dropdown-item" href="#">Friday</a></li>
+      </ul>
+    </div>
     <table class="center-table">
       <thead>
         <tr>
