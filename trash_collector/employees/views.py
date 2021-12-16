@@ -28,9 +28,9 @@ def index(request):
         # This line will return the customer record of the logged-in user if one exists
         logged_in_employee = Employee.objects.get(user=logged_in_user)
         all_customers = Customer.objects.all()
-        #print(datetime.today().strftime('%A'))
         day_of_week = datetime.today().strftime('%A')
         today = date.today()
+       
         
         
         
