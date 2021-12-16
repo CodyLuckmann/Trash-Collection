@@ -7,7 +7,11 @@
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!<br />
     Address: {{ logged_in_employee.address }} {{logged_in_employee.zip_code }}<br />
-    <h1>Customer Info</h1> 
+    <h1>Customer Info</h1>  <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter Customers
+      </button>
+    </div>
     <table class="center-table">
       <thead>
         <tr>
