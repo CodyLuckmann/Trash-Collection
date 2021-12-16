@@ -5,7 +5,6 @@ from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from datetime import date, datetime
-import calendar
 from customers.models import Customer
 from .models import Employee
 
@@ -86,12 +85,57 @@ def charge(request, pk):
     return HttpResponseRedirect(reverse('employees:index'))
 
 def filter(request):
-    todays_customers = Customer.objects.filter(weekly_pickup='Thursday')
+    all_customers = Customer.objects.all()
+    day_of_week = datetime.today().strftime('%A')
     
     context = {
-        'todays_customers': todays_customers
+        'all_customers': all_customers,
+        'day_of_week': day_of_week
     }
-    return(render(request, 'employees/filter_customers.html', context))
+    return render(request, 'employees/filter_customers.html', context)
+
+def filter_monday(request):
+    customers = Customer.objects.all()
+    monday_customers = customers.filter(weekly_pickup = 'Monday')
     
+    context = {
+        'monday_customers': monday_customers
+    }
+    return render(request, 'employees/filter_customers.html', context)
+
+def filter_tuesday(request):
+    customers = Customer.objects.all()
+    tuesday_customers = customers.filter(weekly_pickup = 'Tuesday')
     
+    context = {
+        'tuesday_customers': tuesday_customers
+    }
+    return render(request, 'employees/filter_customers.html', context)
+
+def filter_wednesday(request):
+    customers = Customer.objects.all()
+    wednesday_customers = customers.filter(weekly_pickup = 'Wednesday')
+    
+    context = {
+        'wednesday_customers': wednesday_customers
+    }
+    return render(request, 'employees/filter_customers.html', context)
+
+def filter_thursday(request):
+    customers = Customer.objects.all()
+    thursday_customers = customers.filter(weekly_pickup = 'Thursday')
+    
+    context = {
+        'thursday_customers': thursday_customers
+    }
+    return render(request, 'employees/filter_customers.html', context)
+
+def filter_friday(request):
+    customers = Customer.objects.all()
+    friday_customers = customers.filter(weekly_pickup = 'Friday')
+    
+    context = {
+        'friday_customers': friday_customers
+    }
+    return render(request, 'employees/filter_customers.html', context)
 
