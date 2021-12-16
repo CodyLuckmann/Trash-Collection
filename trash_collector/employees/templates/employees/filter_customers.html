@@ -12,7 +12,19 @@
       <tbody>
         {% for customer in all_customers%} 
           {% if customer.weekly_pickup == "Monday"%}
-            <td>{{customer.name}}</td>
+            <td>{{customer.name}} {{customer.zip_code}}</td>
+          {% endif %}
+          {% if customer.weekly_pickup == "Tuesday"%}
+            <td>{{customer.name}} {{customer.zip_code}}</td>
+          {% endif %}
+          {% if customer.weekly_pickup == "Wednesday"%}
+            <td>{{customer.name}} {{customer.zip_code}}</td>
+          {% endif %}
+          {% if customer.weekly_pickup == "Thursday"%}
+            <td>{{customer.name}} {{customer.zip_code}}</td>
+          {% endif %}
+          {% if customer.weekly_pickup == "Friday"%}
+            <td>{{customer.name}} {{customer.zip_code}}</td>
           {% endif %}
         {% endfor %}          
       </tbody>
