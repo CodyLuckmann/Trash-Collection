@@ -3,24 +3,20 @@
 {% block title %}{% block header %} All Customers By Day {% endblock %}{% endblock %}
 
 {% block content %}
-  </head>
-  <body>
-      <table class="center-table">
-          <thead>
-              <tr>
-                  <th>First Name</th><th>Last Name</th><th>Hire Date</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% for instructor in instructors %}
-              <tr>
-                  <td>{{instructor.first_name}}</td><td>{{instructor.last_name}}</td><td>{{instructor.hire_date}}</td>
-              </tr>
-              {% endfor %}
-          </tbody>
-      </table>
-    
-  </body>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+          <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th>
+        <tr>
+      </thead>
+      <tbody>
+        {% for customer in all_customers%} 
+          {% if customer.weekly_pickup == "Monday"%}
+            <td>{{customer.name}}</td>
+          {% endif %}
+        {% endfor %}          
+      </tbody>
+  </table>
 
 
 {% endblock %}
