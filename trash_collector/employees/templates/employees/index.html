@@ -7,10 +7,9 @@
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!<br />
     Address: {{ logged_in_employee.address }} {{logged_in_employee.zip_code }}<br />
-    <h1>Customer Info</h1>  <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-        Filter Customers
-      </button>
+    <h1>Customer Info</h1>  
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="{% url 'employees:filter' %}" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">Filter Customers</a>
     </div>
     <table class="center-table">
       <thead>
@@ -26,7 +25,8 @@
                   {% if customer.date_of_last_pickup != today%}
                     <tr>
                       <td>{{customer.name}}</td><td>{{customer.zip_code}}</td>
-                      <td>{{customer.weekly_pickup}}</td><td>{{customer.one_time_pickup}}</td><td><a href="{% url 'employees:charge' customer.id %}" class="btn btn-primary" >Confirm Pickup</a></td>
+                      <td>{{customer.weekly_pickup}}</td><td>{{customer.one_time_pickup}}</td>
+                      <td><a href="{% url 'employees:charge' customer.id %}" class="btn btn-primary">Confirm Pickup</a></td>
                     </tr>
                   {% endif %}
                 {% endif %}

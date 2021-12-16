@@ -84,5 +84,14 @@ def charge(request, pk):
     customer.date_of_last_pickup = date.today()
     customer.save()
     return HttpResponseRedirect(reverse('employees:index'))
+
+def filter(request):
+    todays_customers = Customer.objects.filter(weekly_pickup='Monday')
+    
+    context = {
+        'todays_customers': todays_customers
+    }
+    return(render(request, 'employees/index.html', context))
+    
     
 
