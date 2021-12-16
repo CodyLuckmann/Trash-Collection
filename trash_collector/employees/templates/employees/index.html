@@ -1,5 +1,6 @@
 {% extends 'employees\employee_base.html' %}
 
+
 {% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
 
 {% block content %}
@@ -7,12 +8,19 @@
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!<br />
     Address: {{ logged_in_employee.address }} {{logged_in_employee.zip_code }}<br />
-    <h1>Customer Info</h1>  
-    <div class="dropdown">
-      <a class="btn btn-secondary dropdown-toggle" href="{% url 'employees:filter_customers' %}" type="button" id="dropdownMenuButton2" 
-        data-bs-toggle="dropdown" aria-expanded="false">Filter Customers
-      </a>
-    </div>
+    <h1>Customer Info</h1>
+    <form action="/action_page.php"></form>  
+      <label for="placeholder">Choose a day to filter by</label>
+      <select name="placeholder" id="placeholder">
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+      </select>
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
     <table class="center-table">
       <thead>
         <tr>
@@ -43,7 +51,6 @@
     <a href="{% url 'accounts:register' %}">Sign Up</a>
   {% endif %}
 {% endblock %}
-
 
 
 
