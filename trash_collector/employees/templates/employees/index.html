@@ -3,6 +3,11 @@
 {% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
 
 {% block content %}
+<style>
+  th {
+    padding: 5px;
+  }
+</style>
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!<br />
     Address: {{ logged_in_employee.address }} {{logged_in_employee.zip_code }}<br />
@@ -36,6 +41,7 @@
     <a href="{% url 'accounts:register' %}">Sign Up</a>
   {% endif %}
 {% endblock %}
+
 
 
 
