@@ -10,6 +10,6 @@ urlpatterns = [
     path('new/', views.create, name="create"),
     path('edit_employee_profile/', views.edit_profile, name="edit_employee_profile"),
     path('charge/<int:pk>', views.charge, name="charge"),
-    path('index/', views.filter, name="filter")
+    path('filter_customers/', views.filter, name="filter_customers")
 ]
 

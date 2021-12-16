@@ -86,12 +86,12 @@ def charge(request, pk):
     return HttpResponseRedirect(reverse('employees:index'))
 
 def filter(request):
-    todays_customers = Customer.objects.filter(weekly_pickup='Monday')
+    todays_customers = Customer.objects.filter(weekly_pickup='Thursday')
     
     context = {
         'todays_customers': todays_customers
     }
-    return(render(request, 'employees/index.html', context))
+    return(render(request, 'employees/filter_customers.html', context))
     
     
 
