@@ -85,7 +85,6 @@ def charge(request, pk):
     return HttpResponseRedirect(reverse('employees:index'))
 
 
-
 def filter_monday(request):
     all_customers = Customer.objects.all()
     context = {
