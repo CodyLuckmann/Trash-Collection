@@ -1,27 +1,17 @@
 {% extends 'employees/employee_base.html' %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
-    </head>
-    <section class="wednesday-section">
-        <div class="wednesday-container">
-            <body>
-            {% block title %}{% block header %} Wednesday's Customers {% endblock %}{% endblock %}
 
-            {% block content %}
+{% block title %}{% block header %} Wednesday's Customers {% endblock %}{% endblock %}
 
+{% block content %}
+<section class="section-wednesday">
+    <div class="wednesday-container">
+        <body>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Name</th><th>Address</th><th>Zip Code</th> 
                     </tr>
                 </thead>
-                
                 <tbody>
                     {% for customer in all_customers%} 
                         {% if customer.weekly_pickup == "Wednesday"%}
@@ -34,10 +24,7 @@
                     {% endfor %}          
                 </tbody>
             </table>
-
-            {% endblock %}
-                
-            </body>
-        </div>
-    </section>
-</html>
+        </body>
+    </div>
+</section>
+{% endblock %}
