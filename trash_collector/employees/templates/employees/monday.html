@@ -7,14 +7,16 @@
     <thead>
         <tr>
           <th>Name</th><th>Address</th><th>Zip Code</th> 
-        <tr>
+        </tr>
     </thead>
     <tbody>
         {% for customer in all_customers%} 
             {% if customer.weekly_pickup == "Monday"%}
+            <tr>
                 <td>{{customer.name}}</td>
                 <td>{{customer.address}}</td>
                 <td>{{customer.zip_code}}</td>
+            </tr>
             {% endif %}
         {% endfor %}          
     </tbody>
