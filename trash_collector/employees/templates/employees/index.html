@@ -1,70 +1,72 @@
 {% extends 'employees\employee_base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
+  </head>
+  <section class="index-section">
+    <div class="index-container">
+      <body>
+        {% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
+
+      {% block content %}
 
 
-{% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
-
-{% block content %}
-<style>
-  body {
-    background-image: url(https://images.unsplash.com/photo-1561069157-218187260215?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z2FyYmFnZSUyMHBpY2t1cHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
-    background-repeat: no-repeat;
-    background-size: 100%;
-  }
-</style>
-
-  {% if user.is_authenticated %}
-    Hello Employee {{ user.username }}!<br />
-    Address: {{ logged_in_employee.address }} {{logged_in_employee.zip_code }}<br />
-    <h1>Customer Info</h1>
-    <h5>Customer Pickups by Day of Week</h5>
-    <table class="center-table">
-      <thead>
-        <tr>
-          <th><a href="{% url 'employees:filter_monday'  %}">Monday</a></th>
-          <th><a href="{% url 'employees:filter_tuesday'  %}">Tuesday</a></th>
-          <th><a href="{% url 'employees:filter_wednesday'  %}">Wednesday</a></th>
-          <th><a href="{% url 'employees:filter_thursday'  %}">Thursday</a></th>
-          <th><a href="{% url 'employees:filter_friday'  %}">Friday</a></th>
-        </tr>
-      </thead>
-    </table>
-    
-    <table class="center-table">
-      <thead>
-        <tr>
-          <th>Name</th> <th>Zip Code</th> <th>Pick-up Day</th> <th>One Time Pickup</th> <th>Confirm Pickup</th>
-        <tr>
-      </thead>
-        <tbody>
-          {% for customer in all_customers%} 
-            {% if customer.zip_code == logged_in_employee.zip_code %} 
-              {% if customer.weekly_pickup == day_of_week or customer.one_time_pickup == today%}
-                {% if today < customer.suspend_start or today > customer.suspend_end or customer.suspend_start == Null %}
-                  {% if customer.date_of_last_pickup != today%}
-                    <tr>
-                      <td>{{customer.name}}</td><td>{{customer.zip_code}}</td>
-                      <td>{{customer.weekly_pickup}}</td><td>{{customer.one_time_pickup}}</td>
-                      <td><a href="{% url 'employees:charge' customer.id %}" class="btn btn-primary">Confirm Pickup</a></td>
-                    </tr>
+        {% if user.is_authenticated %}
+          Hello Employee {{ user.username }}!<br />
+          Address: {{ logged_in_employee.address }} {{logged_in_employee.zip_code }}<br />
+          <h1>Customer Info</h1>
+          <h5>Customer Pickups by Day of Week</h5>
+          <table class="center-table">
+            <thead>
+              <tr>
+                <th><a href="{% url 'employees:filter_monday'  %}">Monday</a></th>
+                <th><a href="{% url 'employees:filter_tuesday'  %}">Tuesday</a></th>
+                <th><a href="{% url 'employees:filter_wednesday'  %}">Wednesday</a></th>
+                <th><a href="{% url 'employees:filter_thursday'  %}">Thursday</a></th>
+                <th><a href="{% url 'employees:filter_friday'  %}">Friday</a></th>
+              </tr>
+            </thead>
+          </table>
+          
+          <table class="center-table">
+            <thead>
+              <tr>
+                <th>Name</th> <th>Zip Code</th> <th>Pick-up Day</th> <th>One Time Pickup</th> <th>Confirm Pickup</th>
+              <tr>
+            </thead>
+              <tbody>
+                {% for customer in all_customers%} 
+                  {% if customer.zip_code == logged_in_employee.zip_code %} 
+                    {% if customer.weekly_pickup == day_of_week or customer.one_time_pickup == today%}
+                      {% if today < customer.suspend_start or today > customer.suspend_end or customer.suspend_start == Null %}
+                        {% if customer.date_of_last_pickup != today%}
+                          <tr>
+                            <td>{{customer.name}}</td><td>{{customer.zip_code}}</td>
+                            <td>{{customer.weekly_pickup}}</td><td>{{customer.one_time_pickup}}</td>
+                            <td><a href="{% url 'employees:charge' customer.id %}" class="btn btn-primary">Confirm Pickup</a></td>
+                          </tr>
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
                   {% endif %}
-                {% endif %}
-              {% endif %}
-            {% endif %}
-          {% endfor %}          
-        </tbody>
-    </table>
-    {% else %}
-    <p>You are at the employee index, but you are not logged in.</p>
-    <a href="{% url 'login' %}">Log In</a>
-    <a href="{% url 'accounts:register' %}">Sign Up</a>
-  {% endif %}
-{% endblock %}
-
-
-  {% load static %}    
-  <div class="row d-flex justify-content-center p-3">        
-    <background-img src="{% static 'trash.jpg' %}"  alt="Garbage pickup">   
-  </div>
-
+                {% endfor %}          
+              </tbody>
+          </table>
+          {% else %}
+          <p>You are at the employee index, but you are not logged in.</p>
+          <a href="{% url 'login' %}">Log In</a>
+          <a href="{% url 'accounts:register' %}">Sign Up</a>
+        {% endif %}
+      {% endblock %}
+        
+      </body>
+    </div>
+  </section>
+</html>
 
 
