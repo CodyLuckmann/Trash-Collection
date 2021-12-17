@@ -84,15 +84,7 @@ def charge(request, pk):
     customer.save()
     return HttpResponseRedirect(reverse('employees:index'))
 
-def filter(request):
-    all_customers = Customer.objects.all()
-    day_of_week = datetime.today().strftime('%A')
-    
-    context = {
-        'all_customers': all_customers,
-        'day_of_week': day_of_week
-    }
-    return render(request, 'employees/filter_customers.html', context)
+
 
 def filter_monday(request):
     customers = Customer.objects.all()
@@ -101,7 +93,7 @@ def filter_monday(request):
     context = {
         'monday_customers': monday_customers
     }
-    return render(request, 'employees/filter_customers.html', context)
+    return render(request, 'employees/monday.html', context)
 
 def filter_tuesday(request):
     customers = Customer.objects.all()
@@ -110,7 +102,7 @@ def filter_tuesday(request):
     context = {
         'tuesday_customers': tuesday_customers
     }
-    return render(request, 'employees/filter_customers.html', context)
+    return render(request, 'employees/tuesday.html', context)
 
 def filter_wednesday(request):
     customers = Customer.objects.all()
@@ -119,7 +111,7 @@ def filter_wednesday(request):
     context = {
         'wednesday_customers': wednesday_customers
     }
-    return render(request, 'employees/filter_customers.html', context)
+    return render(request, 'employees/wednesday.html', context)
 
 def filter_thursday(request):
     customers = Customer.objects.all()
@@ -128,7 +120,7 @@ def filter_thursday(request):
     context = {
         'thursday_customers': thursday_customers
     }
-    return render(request, 'employees/filter_customers.html', context)
+    return render(request, 'employees/thursday.html', context)
 
 def filter_friday(request):
     customers = Customer.objects.all()
@@ -137,5 +129,4 @@ def filter_friday(request):
     context = {
         'friday_customers': friday_customers
     }
-    return render(request, 'employees/filter_customers.html', context)
-
+    return render(request, 'employees/friday.html', context)

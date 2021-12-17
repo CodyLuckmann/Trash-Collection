@@ -10,6 +10,10 @@ urlpatterns = [
     path('new/', views.create, name="create"),
     path('edit_employee_profile/', views.edit_profile, name="edit_employee_profile"),
     path('charge/<int:pk>', views.charge, name="charge"),
-    path('filter_customers/', views.filter, name="filter_customers")
+    path('monday/', views.filter_monday, name="filter_monday"),
+    path('tuesday/', views.filter_tuesday, name="filter_tuesday"),
+    path('wednesday/', views.filter_wednesday, name="filter_wednesday"),
+    path('thursday/', views.filter_thursday, name="filter_thursday"),
+    path('friday/', views.filter_friday, name="filter_friday")
 ]
 
