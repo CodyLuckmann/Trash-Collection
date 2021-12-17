@@ -87,11 +87,9 @@ def charge(request, pk):
 
 
 def filter_monday(request):
-    customers = Customer.objects.all()
-    monday_customers = customers.filter(weekly_pickup = 'Monday')
-    
+    all_customers = Customer.objects.all()
     context = {
-        'monday_customers': monday_customers
+        'all_customers': all_customers
     }
     return render(request, 'employees/monday.html', context)
 
