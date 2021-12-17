@@ -7,3 +7,8 @@ table, th, td {
     text-align: center;
 }
 
+td {
+    font-weight: bold;
+    text-shadow: 10px;
+}
+
