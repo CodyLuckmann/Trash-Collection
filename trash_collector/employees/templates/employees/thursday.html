@@ -1,14 +1,19 @@
 {% extends 'employees/employee_base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
+</head>
+<body>
 {% block title %}{% block header %} Thursday's Customers {% endblock %}{% endblock %}
 
 {% block content %}
 
-<style>
-    body {
-        background-color: rgba(143, 188, 143, 0.664);
-    }
-</style>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -29,3 +34,6 @@
 </table>
 
 {% endblock %}
+    
+</body>
+</html>

@@ -9,6 +9,8 @@ table, th, td {
 
 td {
     font-weight: bold;
-    text-shadow: 10px;
 }
 
+body {
+    background-color: rgba(143, 188, 143, 0.664);
+}
