@@ -1,7 +1,25 @@
 {% extends 'employees/employee_base.html' %}
 
-{% block content %}
+{% block title %}{% block header %} Tuesday's Customers {% endblock %}{% endblock %}
 
-<h1>hello</h1>
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th>Name</th><th>Address</th><th>Zip Code</th> 
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in all_customers%} 
+            {% if customer.weekly_pickup == "Tuesday"%}
+            <tr>
+                <td>{{customer.name}}</td>
+                <td>{{customer.address}}</td>
+                <td>{{customer.zip_code}}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}          
+    </tbody>
+</table> 
 
 {% endblock %}
