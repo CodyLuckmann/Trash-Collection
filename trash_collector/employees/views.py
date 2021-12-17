@@ -94,37 +94,33 @@ def filter_monday(request):
     return render(request, 'employees/monday.html', context)
 
 def filter_tuesday(request):
-    customers = Customer.objects.all()
-    tuesday_customers = customers.filter(weekly_pickup = 'Tuesday')
+   all_customers = Customer.objects.all()
     
-    context = {
-        'tuesday_customers': tuesday_customers
-    }
-    return render(request, 'employees/tuesday.html', context)
+   context = {
+        'all_customers': all_customers
+   }
+   return render(request, 'employees/tuesday.html', context)
 
 def filter_wednesday(request):
-    customers = Customer.objects.all()
-    wednesday_customers = customers.filter(weekly_pickup = 'Wednesday')
+   all_customers = Customer.objects.all()
     
-    context = {
-        'wednesday_customers': wednesday_customers
+   context = {
+        'all_customers': all_customers
     }
-    return render(request, 'employees/wednesday.html', context)
+   return render(request, 'employees/wednesday.html', context)
 
 def filter_thursday(request):
-    customers = Customer.objects.all()
-    thursday_customers = customers.filter(weekly_pickup = 'Thursday')
+    all_customers = Customer.objects.all()
     
     context = {
-        'thursday_customers': thursday_customers
+        'all_customers': all_customers
     }
     return render(request, 'employees/thursday.html', context)
 
 def filter_friday(request):
-    customers = Customer.objects.all()
-    friday_customers = customers.filter(weekly_pickup = 'Friday')
+    all_customers = Customer.objects.all()
     
     context = {
-        'friday_customers': friday_customers
+        'all_customers': all_customers
     }
     return render(request, 'employees/friday.html', context)
