@@ -3,8 +3,8 @@
 {% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
 
 {% block content %}
-<section class="section-index">
-  <div class="index-container">
+<!-- <section class="section-index">
+  <div class="index-container"> -->
           {% if user.is_authenticated %}
             Hello Employee {{ user.username }}!<br />
             Address: {{ logged_in_employee.address }} {{logged_in_employee.zip_code }}<br />
