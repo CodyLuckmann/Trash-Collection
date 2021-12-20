@@ -5,6 +5,11 @@
 {% block header %} Choose Suspension Dates {% endblock %}
 
 {% block content %}
+<style>
+    body {
+      background-color: rgba(32, 178, 171, 0.507);
+    }
+  </style>
 <br />
 <form action="{% url 'customers:suspend' %}" method="post">
     {% csrf_token %}
